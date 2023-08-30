@@ -1,4 +1,4 @@
-[Prev](https://github.com/Ubugeeei/45minos/tree/master/init-stack-pointer)
+[Prev](https://github.com/Ubugeeei/45minos/tree/master/030-init-stack-pointer)
 
 # 文字列を表示する
 
@@ -67,4 +67,4 @@ fn kernel_main() {
 
 `Hello, world!` が表示されれば OK!
 
-[Prev](https://github.com/Ubugeeei/45minos/tree/master/init-stack-pointer)
+[Prev](https://github.com/Ubugeeei/45minos/tree/master/030-init-stack-pointer)

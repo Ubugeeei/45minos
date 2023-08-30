@@ -1,4 +1,4 @@
-[Prev](https://github.com/Ubugeeei/45minos/tree/master/build-and-book-kernel) | [Prev](https://github.com/Ubugeeei/45minos/tree/master/put_string)
+[Prev](https://github.com/Ubugeeei/45minos/tree/master/020-build-and-book-kernel) | [Next](https://github.com/Ubugeeei/45minos/tree/master/040-put-string)
 
 # スタックポインタの初期化
 
@@ -25,4 +25,4 @@ pub unsafe extern "C" fn boot() -> ! {
 }
 ```
 
-[Prev](https://github.com/Ubugeeei/45minos/tree/master/build-and-book-kernel) | [Prev](https://github.com/Ubugeeei/45minos/tree/master/put_string)
+[Prev](https://github.com/Ubugeeei/45minos/tree/master/build-and-book-kernel) | [Next](https://github.com/Ubugeeei/45minos/tree/master/040-put-string)
