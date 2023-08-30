@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "45minos"
+name = "getting-started"
 version = "0.1.0"
