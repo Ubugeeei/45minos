@@ -1,4 +1,4 @@
-[Next](https://github.com/Ubugeeei/45minos/tree/master/build-and-book-kernel)
+[Prev](https://github.com/Ubugeeei/45minos/tree/master/getting-started)
 
 # 1. ターゲットの追加
 
@@ -132,4 +132,4 @@ $ sh run.sh
 
 で起動できれば OK (無限ループなので何も起こらない)
 
-[Next](https://github.com/Ubugeeei/45minos/tree/master/build-and-book-kernel)
+[Prev](https://github.com/Ubugeeei/45minos/tree/master/getting-started)

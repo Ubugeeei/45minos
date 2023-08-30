@@ -1,3 +1,5 @@
+[Next](https://github.com/Ubugeeei/45minos/tree/master/build-and-book-kernel)
+
 # 1. 必要なもののインストール
 
 - qemu (qemu-system-riscv32)
@@ -22,3 +24,5 @@ QEMU=qemu-system-riscv32
 
 $QEMU -machine virt -bios default -nographic -serial mon:stdio --no-reboot
 ```
+
+[Next](https://github.com/Ubugeeei/45minos/tree/master/build-and-book-kernel)
