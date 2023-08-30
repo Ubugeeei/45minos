@@ -1,4 +1,4 @@
-[Prev](https://github.com/Ubugeeei/45minos/tree/master/getting-started)
+[Prev](https://github.com/Ubugeeei/45minos/tree/master/getting-started) | [Next](https://github.com/Ubugeeei/45minos/tree/master/init-stack-pointer)
 
 # 1. ターゲットの追加
 
@@ -132,4 +132,4 @@ $ sh run.sh
 
 で起動できれば OK (無限ループなので何も起こらない)
 
-[Prev](https://github.com/Ubugeeei/45minos/tree/master/getting-started)
+[Prev](https://github.com/Ubugeeei/45minos/tree/master/getting-started) | [Next](https://github.com/Ubugeeei/45minos/tree/master/init-stack-pointer)
