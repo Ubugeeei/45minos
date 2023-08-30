@@ -1,10 +1,14 @@
-[Prev](https://github.com/Ubugeeei/45minos/tree/master/030-init-stack-pointer) | [Next](https://github.com/Ubugeeei/45minos/tree/master/050-trap)
+#![no_std]
+#![no_main]
 
-# 文字列を表示する
+use core::arch::asm;
+use core::panic::PanicInfo;
 
-## SBI コールの実装
+#[panic_handler]
+fn panic(_info: &PanicInfo) -> ! {
+    loop {}
+}
 
-```rs
 #[repr(C)]
 struct SBIRet {
     error: usize,
@@ -37,24 +41,10 @@ fn sbi_call(eid: usize, fid: usize, arg0: usize, arg1: usize, arg2: usize) -> SB
 
     SBIRet { error, value }
 }
-```
 
-## SBI を使って文字を出力
-
-```rs
 fn put_char(ch: u8) {
     sbi_call(0x01, 1, ch as usize, 0, 0);
 }
-```
-
-## 簡易的な println マクロの実装
-
-buffer に書き込んで flush で put_char する.
-
-フォーマットは core に生えてるものを使う
-
-```rs
-use core::fmt;
 
 const BUFFER_SIZE: usize = 128;
 
@@ -105,18 +95,28 @@ macro_rules! println {
         }
     };
 }
-```
 
-kernel_main で使ってみる
+extern "C" {
+    static __stack_top: u8;
+}
 
-```rs
+#[no_mangle]
+#[link_section = ".text.boot"]
+#[allow(clippy::missing_safety_doc)]
+pub unsafe extern "C" fn boot() -> ! {
+    asm!(
+        "mv sp, {stack_top}",
+        "j {kernel_main}",
+        stack_top = in(reg) &__stack_top,
+        kernel_main = sym kernel_main,
+    );
+    #[allow(clippy::empty_loop)]
+    loop {}
+}
+
+#[allow(dead_code)]
 fn kernel_main() {
     println!("Hello, world! {:#04x}", 1);
     #[allow(clippy::empty_loop)]
     loop {}
 }
-```
-
-`Hello, world! 0x01` が表示されれば OK!
-
-[Prev](https://github.com/Ubugeeei/45minos/tree/master/030-init-stack-pointer) | [Next](https://github.com/Ubugeeei/45minos/tree/master/050-trap)
