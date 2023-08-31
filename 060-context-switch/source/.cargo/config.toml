@@ -1,0 +1,5 @@
+[target.riscv32i-unknown-none-elf]
+rustflags = ["-Clink-arg=-Tkernel.ld", "-Clink-arg=-Map=target/kernel.map"]
+
+[build]
+target = "riscv32i-unknown-none-elf"

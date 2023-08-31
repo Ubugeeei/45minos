@@ -1,4 +1,4 @@
-[Prev](https://github.com/Ubugeeei/45minos/tree/master/040-put-string)
+[Prev](https://github.com/Ubugeeei/45minos/tree/master/040-put-string) | [Next](https://github.com/Ubugeeei/45minos/tree/master/060-context-switch)
 
 # トラップ
 
@@ -58,4 +58,4 @@ fn kernel_main() {
 
 trap_handler が実行され、print されていれば Ok!
 
-[Prev](https://github.com/Ubugeeei/45minos/tree/master/040-put-string)
+[Prev](https://github.com/Ubugeeei/45minos/tree/master/040-put-string) | [Next](https://github.com/Ubugeeei/45minos/tree/master/060-context-switch)

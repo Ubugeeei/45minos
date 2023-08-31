@@ -1,0 +1,11 @@
+[[bin]]
+name = "45minos_kernel"
+path = "src/kernel.rs"
+
+[package]
+name = "getting-started"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
