@@ -96,6 +96,22 @@ macro_rules! println {
     };
 }
 
+extern "C" fn trap_handler() {
+    let (mut _scause, mut _sepc) = (0, 0);
+    unsafe {
+        asm!(
+            "csrr {scause}, scause",
+            "csrr {sepc}, sepc",
+            scause = out(reg) _scause,
+            sepc = out(reg) _sepc,
+        );
+    }
+    println!("Trap: scause={:#x} sepc={:#x}", _scause, _sepc);
+
+    #[allow(clippy::empty_loop)]
+    loop {}
+}
+
 extern "C" {
     static __stack_top: u8;
 }
@@ -116,7 +132,16 @@ pub unsafe extern "C" fn boot() -> ! {
 
 #[allow(dead_code)]
 fn kernel_main() {
+    unsafe {
+        asm!("csrw stvec, {0}", in(reg) trap_handler);
+    }
+
     println!("Hello, world! {:#04x}", 1);
+
+    unsafe {
+        asm!("ebreak");
+    }
+
     #[allow(clippy::empty_loop)]
     loop {}
 }

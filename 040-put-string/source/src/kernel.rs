@@ -87,12 +87,10 @@ impl core::fmt::Write for Buffer {
 
 macro_rules! println {
     ($($arg:tt)*) => {
-        {
-            let mut buffer = Buffer::new();
-            core::fmt::write(&mut buffer, format_args!($($arg)*)).unwrap();
-            buffer.write(b'\n');
-            buffer.flush();
-        }
+        let mut buffer = Buffer::new();
+        core::fmt::write(&mut buffer, format_args!($($arg)*)).unwrap();
+        buffer.write(b'\n');
+        buffer.flush();
     };
 }
 
@@ -116,7 +114,8 @@ pub unsafe extern "C" fn boot() -> ! {
 
 #[allow(dead_code)]
 fn kernel_main() {
-    println!("Hello, world! {:#04x}", 1);
+    println!("Hello, world!");
+    println!("{:#04x}", 0x1234abcd);
     #[allow(clippy::empty_loop)]
     loop {}
 }
