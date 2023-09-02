@@ -15,27 +15,32 @@ struct SBIRet {
     value: usize,
 }
 
-fn sbi_call(eid: usize, fid: usize, arg0: usize, arg1: usize, arg2: usize) -> SBIRet {
+#[allow(clippy::too_many_arguments)]
+#[inline(always)]
+fn sbi_call(
+    ext_id: usize,
+    fn_id: usize,
+    arg0: usize,
+    arg1: usize,
+    arg2: usize,
+    arg3: usize,
+    arg4: usize,
+    arg5: usize,
+) -> SBIRet {
     let error: usize;
     let value: usize;
 
     unsafe {
         asm!(
-            "mv a0, {arg0}",
-            "mv a1, {arg1}",
-            "mv a2, {arg2}",
-            "mv a7, {eid}",
-            "mv a6, {fid}",
             "ecall",
-
-            arg0 = in(reg) arg0,
-            arg1 = in(reg) arg1,
-            arg2 = in(reg) arg2,
-            eid = in(reg) eid,
-            fid = in(reg) fid,
-
-            out("a0") error,
-            out("a1") value,
+            inout("a0") arg0 => value,
+            in("a1") arg1,
+            in("a2") arg2,
+            in("a3") arg3,
+            in("a4") arg4,
+            in("a5") arg5,
+            in("a6") fn_id,
+            inout("a7") ext_id => error
         );
     }
 
@@ -43,7 +48,7 @@ fn sbi_call(eid: usize, fid: usize, arg0: usize, arg1: usize, arg2: usize) -> SB
 }
 
 fn put_char(ch: u8) {
-    sbi_call(0x01, 1, ch as usize, 0, 0);
+    sbi_call(0x01, 0x00, ch as usize, 0, 0, 0, 0, 0);
 }
 
 const BUFFER_SIZE: usize = 128;
